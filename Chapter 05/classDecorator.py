@@ -1,8 +1,8 @@
 from threading import Lock
 
 
-def lock_class(methodnames, lockfactory):
-    return lambda cls: make_threadsafe(cls, methodnames, lockfactory)
+def lock_class(_method_names, _lock_factory):
+    return lambda cls: make_threadsafe(cls, _method_names, _lock_factory)
 
 
 def lock_method(method):
@@ -18,19 +18,19 @@ def lock_method(method):
     return locked_method
 
 
-def make_threadsafe(cls, methodnames, lockfactory):
+def make_threadsafe(cls, method_names, lock_factory):
     init = cls.__init__
 
-    def newinit(self, *arg, **kwarg):
+    def new_init(self, *arg, **kwarg):
         init(self, *arg, **kwarg)
-        self._lock = lockfactory()
+        self._lock = lock_factory()
 
-    cls.__init__ = newinit
+    cls.__init__ = new_init
 
-    for methodname in methodnames:
-        oldmethod = getattr(cls, methodname)
-        newmethod = lock_method(oldmethod)
-        setattr(cls, methodname, newmethod)
+    for method_name in method_names:
+        old_method = getattr(cls, method_name)
+        new_method = lock_method(old_method)
+        setattr(cls, method_name, new_method)
 
     return cls
 
@@ -39,6 +39,6 @@ def make_threadsafe(cls, methodnames, lockfactory):
 class ClassDecoratorLockedSet(set):
 
     @lock_method  # if you double-lock a method, a TypeError is raised
-    def lockedMethod(self):
+    def locked_method(self):
         print("This section of our code would be thread safe")
         pass

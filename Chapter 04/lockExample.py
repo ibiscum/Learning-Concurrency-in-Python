@@ -1,12 +1,11 @@
 import threading
 import time
-import random
 
 counter = 1
 lock = threading.Lock()
 
 
-def workerA():
+def worker_a():
     global counter
     lock.acquire()
     try:
@@ -18,7 +17,7 @@ def workerA():
         lock.release()
 
 
-def workerB():
+def worker_b():
     global counter
     lock.acquire()
     try:
@@ -32,8 +31,8 @@ def workerB():
 
 def main():
     t0 = time.time()
-    thread1 = threading.Thread(target=workerA)
-    thread2 = threading.Thread(target=workerB)
+    thread1 = threading.Thread(target=worker_a)
+    thread2 = threading.Thread(target=worker_b)
 
     thread1.start()
     thread2.start()

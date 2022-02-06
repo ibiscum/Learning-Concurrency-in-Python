@@ -50,8 +50,8 @@ def main():
 
     t3 = timeit.default_timer()
     for number in PRIMES:
-        isPrime = is_prime(number)
-        print("{} is prime: {}".format(number, isPrime))
+        is_prime_number = is_prime(number)
+        print("{} is prime: {}".format(number, is_prime_number))
     print("{} Seconds needed for single threaded execution".format(timeit.default_timer() - t3))
 
 
