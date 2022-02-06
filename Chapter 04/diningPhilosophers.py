@@ -5,11 +5,11 @@ import random
 
 class Philosopher(threading.Thread):
 
-    def __init__(self, name, leftFork, rightFork):
+    def __init__(self, name, left_fork, right_fork):
         print("{} Has Sat Down At the Table".format(name))
         threading.Thread.__init__(self, name=name)
-        self.leftFork = leftFork
-        self.rightFork = rightFork
+        self.leftFork = left_fork
+        self.rightFork = right_fork
 
     def run(self):
         print("{} has started thinking".format(threading.currentThread().getName()))

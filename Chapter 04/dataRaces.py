@@ -1,8 +1,4 @@
-import threading
-import time
-
-
-def myWorker():
+def my_worker():
     pass
 
 

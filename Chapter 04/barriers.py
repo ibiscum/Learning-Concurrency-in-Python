@@ -3,11 +3,11 @@ import time
 import random
 
 
-class myThread(threading.Thread):
+class MyThread(threading.Thread):
 
-    def __init__(self, barrier):
+    def __init__(self, _barrier):
         threading.Thread.__init__(self)
-        self.barrier = barrier;
+        self.barrier = _barrier
 
     def run(self):
         print("Thread {} working on something".format(threading.current_thread()))
@@ -23,7 +23,7 @@ barrier = threading.Barrier(4)
 threads = []
 
 for i in range(4):
-    thread = myThread(barrier)
+    thread = MyThread(barrier)
     thread.start()
     threads.append(thread)
 
