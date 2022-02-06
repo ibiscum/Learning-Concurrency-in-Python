@@ -1,11 +1,11 @@
 import threading
 import time
 
-def myWorker():
-  pass
+
+def my_worker():
+    pass
+
 
 def main():
-  
-
-if __name__ == '__main__':
-  main()
+    if __name__ == '__main__':
+        main()

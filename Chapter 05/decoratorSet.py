@@ -1,9 +1,12 @@
 def locked_method(method):
     """Method decorator. Requires a lock object at self._lock"""
+
     def newmethod(self, *args, **kwargs):
         with self._lock:
             return method(self, *args, **kwargs)
+
     return newmethod
+
 
 class DecoratorLockedSet(set):
     def __init__(self, *args, **kwargs):

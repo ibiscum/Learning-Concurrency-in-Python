@@ -1,18 +1,20 @@
 import asyncio
 import random
-import time
+
+
+# @asyncio.coroutine
+async def newsProducer(my_queue):
+    while True:
+        my_queue.put(random.randint(1, 5))
+        # asyncio.sleep(1)
+
 
 @asyncio.coroutine
-def newsProducer(myQueue):
-  while True:
-    yield from myQueue.put(random.randint(1,5))
-    yield from asyncio.sleep(1)
-    
-@asyncio.coroutine
 def newsConsumer(myQueue):
-  while True:
-    articleId = yield from myQueue.get()
-    print("News Reader Consumed News Article {}", articleId)
+    while True:
+        articleId = yield from myQueue.get()
+        print("News Reader Consumed News Article {}", articleId)
+
 
 myQueue = asyncio.Queue()
 
@@ -22,6 +24,6 @@ loop.create_task(newsProducer(myQueue))
 loop.create_task(newsConsumer(myQueue))
 
 try:
-  loop.run_forever()
+    loop.run_forever()
 finally:
-  loop.close()
+    loop.close()

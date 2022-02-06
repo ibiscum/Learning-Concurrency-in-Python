@@ -22,6 +22,7 @@ PRIMES = [
     115797848077099,
     1099726899285419]
 
+
 def is_prime(n):
     if n % 2 == 0:
         return False
@@ -31,27 +32,28 @@ def is_prime(n):
         if n % i == 0:
             return False
     return True
-    
+
+
 def main():
-
-  t1 = timeit.default_timer()
-  with ProcessPoolExecutor(max_workers=4) as executor:
+    t1 = timeit.default_timer()
+    with ProcessPoolExecutor(max_workers=4) as executor:
         for number, prime in zip(PRIMES, executor.map(is_prime, PRIMES)):
             print('%d is prime: %s' % (number, prime))
 
-  print("{} Seconds Needed for ProcessPoolExecutor".format(timeit.default_timer() - t1))
-  
-  t2 = timeit.default_timer()
-  with ThreadPoolExecutor(max_workers=4) as executor:
+    print("{} Seconds Needed for ProcessPoolExecutor".format(timeit.default_timer() - t1))
+
+    t2 = timeit.default_timer()
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for number, prime in zip(PRIMES, executor.map(is_prime, PRIMES)):
             print('%d is prime: %s' % (number, prime))
-  print("{} Seconds Needed for ThreadPoolExecutor".format(timeit.default_timer() - t2))
+    print("{} Seconds Needed for ThreadPoolExecutor".format(timeit.default_timer() - t2))
 
-  t3 = timeit.default_timer()
-  for number in PRIMES:
-    isPrime = is_prime(number)
-    print("{} is prime: {}".format(number, isPrime))
-  print("{} Seconds needed for single threaded execution".format(timeit.default_timer()-t3))
+    t3 = timeit.default_timer()
+    for number in PRIMES:
+        isPrime = is_prime(number)
+        print("{} is prime: {}".format(number, isPrime))
+    print("{} Seconds needed for single threaded execution".format(timeit.default_timer() - t3))
+
 
 if __name__ == '__main__':
-  main()
+    main()

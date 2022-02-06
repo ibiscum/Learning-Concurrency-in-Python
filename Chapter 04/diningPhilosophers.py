@@ -2,33 +2,35 @@ import threading
 import time
 import random
 
+
 class Philosopher(threading.Thread):
 
-  def __init__(self, name, leftFork, rightFork):
-    print("{} Has Sat Down At the Table".format(name))
-    threading.Thread.__init__(self, name=name)
-    self.leftFork = leftFork
-    self.rightFork = rightFork
+    def __init__(self, name, leftFork, rightFork):
+        print("{} Has Sat Down At the Table".format(name))
+        threading.Thread.__init__(self, name=name)
+        self.leftFork = leftFork
+        self.rightFork = rightFork
 
-  def run(self):
-    print("{} has started thinking".format(threading.currentThread().getName()))
-    while True:
-      time.sleep(random.randint(1,5))
-      print("{} has finished thinking".format(threading.currentThread().getName()))
-      self.leftFork.acquire()
-      time.sleep(random.randint(1,5))
-      try:
-        print("{} has acquired the left fork".format(threading.currentThread().getName()))
+    def run(self):
+        print("{} has started thinking".format(threading.currentThread().getName()))
+        while True:
+            time.sleep(random.randint(1, 5))
+            print("{} has finished thinking".format(threading.currentThread().getName()))
+            self.leftFork.acquire()
+            time.sleep(random.randint(1, 5))
+            try:
+                print("{} has acquired the left fork".format(threading.currentThread().getName()))
 
-        self.rightFork.acquire()
-        try:
-          print("{} has attained both forks, currently eating".format(threading.currentThread().getName()))
-        finally:
-          self.rightFork.release()   
-          print("{} has released the right fork".format(threading.currentThread().getName()))
-      finally:
-        self.leftFork.release()
-        print("{} has released the left fork".format(threading.currentThread().getName()))
+                self.rightFork.acquire()
+                try:
+                    print("{} has attained both forks, currently eating".format(threading.currentThread().getName()))
+                finally:
+                    self.rightFork.release()
+                    print("{} has released the right fork".format(threading.currentThread().getName()))
+            finally:
+                self.leftFork.release()
+                print("{} has released the left fork".format(threading.currentThread().getName()))
+
 
 fork1 = threading.RLock()
 fork2 = threading.RLock()

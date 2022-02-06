@@ -1,26 +1,31 @@
 import turtle
 
-turtle.setup(500,500)                
-window = turtle.Screen()              
-window.title("Event Handling 101!")     
-window.bgcolor("lightblue")             
-nathan = turtle.Turtle()  
+turtle.setup(500, 500)
+window = turtle.Screen()
+window.title("Event Handling 101!")
+window.bgcolor("lightblue")
+nathan = turtle.Turtle()
 
-def moveForward():
+
+def move_forward():
     nathan.forward(50)
 
-def moveLeft():
+
+def move_left():
     nathan.left(30)
 
-def moveRight():
+
+def move_right():
     nathan.right(30)
 
-def start():  
-    window.onkey(moveForward, "Up")
-    window.onkey(moveLeft, "Left")
-    window.onkey(moveRight, "Right")
+
+def start():
+    window.onkey(move_forward, "Up")
+    window.onkey(move_left, "Left")
+    window.onkey(move_right, "Right")
     window.listen()
     window.mainloop()
+
 
 if __name__ == '__main__':
     start()

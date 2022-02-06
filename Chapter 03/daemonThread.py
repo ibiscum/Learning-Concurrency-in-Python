@@ -1,22 +1,23 @@
 import threading
 import time
 
-def standardThread():
+
+def standard_thread():
     print("Starting my Standard Thread")
     time.sleep(20)
     print("Ending my standard thread")
 
-def daemonThread():
+
+def daemon_thread():
     while True:
-      print("Sending Out Heartbeat Signal")
-      time.sleep(2)
+        print("Sending Out Heartbeat Signal")
+        time.sleep(2)
+
 
 if __name__ == '__main__':
-	standardThread = threading.Thread(target=standardThread)
-	daemonThread = threading.Thread(target=daemonThread)
-	daemonThread.setDaemon(True)
-	daemonThread.start()
-  
-	standardThread.start()
+    standardThread = threading.Thread(target=standard_thread)
+    daemonThread = threading.Thread(target=daemon_thread)
+    daemonThread.setDaemon(True)
+    daemonThread.start()
 
-
+    standardThread.start()
