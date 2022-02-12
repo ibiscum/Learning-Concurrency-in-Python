@@ -1,8 +1,9 @@
 import os
 from multiprocessing import Pool
+# import multiprocessing
 
 
-def myTask(n):
+def my_task(n):
     print("Task processed by Process {}".format(os.getpid()))
     return n * 2
 
@@ -13,7 +14,7 @@ def main():
         tasks = []
 
         for i in range(4):
-            task = p.apply_async(func=myTask, args=(i,))
+            task = p.apply_async(func=my_task, args=(i,))
             tasks.append(task)
 
         for task in tasks:

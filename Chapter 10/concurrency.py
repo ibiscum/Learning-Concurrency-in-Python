@@ -6,9 +6,11 @@ from threading import current_thread
 from rx import Observable
 from rx.concurrency import ThreadPoolScheduler
 
+
 def processHeavyCalc(value):
-  time.sleep(random.randint(5,20) * .1)
-  return value
+    time.sleep(random.randint(5, 20) * .1)
+    return value
+
 
 # calculate number of CPU's, then create a ThreadPoolScheduler with that number of threads
 optimal_thread_count = multiprocessing.cpu_count()

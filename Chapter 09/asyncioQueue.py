@@ -9,10 +9,11 @@ async def newsProducer(my_queue):
         # asyncio.sleep(1)
 
 
-@asyncio.coroutine
-def newsConsumer(myQueue):
+async def newsConsumer(myQueue):
     while True:
-        articleId = yield from myQueue.get()
+        # articleId = yield from myQueue.get()
+        articleId = myQueue.get()
+
         print("News Reader Consumed News Article {}", articleId)
 
 

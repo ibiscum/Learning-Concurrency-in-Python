@@ -2,12 +2,12 @@ from rx import Observable, Observer
 
 
 def push_five_strings(observer):
-        observer.on_next("Alpha")
-        observer.on_next("Beta")
-        observer.on_next("Gamma")
-        observer.on_next("Delta")
-        observer.on_next("Epsilon")
-        observer.on_completed()
+    observer.on_next("Alpha")
+    observer.on_next("Beta")
+    observer.on_next("Gamma")
+    observer.on_next("Delta")
+    observer.on_next("Epsilon")
+    observer.on_completed()
 
 
 class PrintObserver(Observer):
@@ -20,6 +20,7 @@ class PrintObserver(Observer):
 
     def on_error(self, error):
         print("Error Occurred: {0}".format(error))
+
 
 source = Observable.create(push_five_strings)
 

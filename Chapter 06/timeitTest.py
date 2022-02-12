@@ -3,11 +3,13 @@ import threading
 import random
 import time
 
+
 def myWorker():
-  for i in range(5):
-    print("Starting wait time")
-    time.sleep(random.randint(1,5))
-    print("Completed Wait")
+    for i in range(5):
+        print("Starting wait time")
+        time.sleep(random.randint(1, 5))
+        print("Completed Wait")
+
 
 thread1 = threading.Thread(target=myWorker)
 thread2 = threading.Thread(target=myWorker)

@@ -19,6 +19,7 @@ PRIMES = [
     115797848077099,
     1099726899285419]
 
+
 def is_prime(n):
     if n % 2 == 0:
         return False
@@ -29,11 +30,13 @@ def is_prime(n):
             return False
     return True
 
+
 def main():
-  t1 = timeit.default_timer()
-  with Pool(4) as p:
-    print(p.map(is_prime, PRIMES))
-  print("{} Seconds needed for multiprocessing pool".format(timeit.default_timer() - t1))
+    t1 = timeit.default_timer()
+    with Pool(4) as p:
+        print(p.map(is_prime, PRIMES))
+    print("{} Seconds needed for multiprocessing pool".format(timeit.default_timer() - t1))
+
 
 if __name__ == '__main__':
-  main()
+    main()

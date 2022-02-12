@@ -1,8 +1,10 @@
+from abc import ABC
+
 import tornado.ioloop
 import tornado.web
 
 
-class MainHandler(tornado.web.RequestHandler):
+class MainHandler(tornado.web.RequestHandler, ABC):
     def get(self):
         self.write("Hello, world")
 
