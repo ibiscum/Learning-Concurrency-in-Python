@@ -1,4 +1,4 @@
-from rx import Observable
+# from rx import Observable
 
 
 # Here we define our custom observer which
@@ -30,7 +30,7 @@ class TemperatureObserver(Observer):
 
 # Publish some fake temperature readings
 # xs = Observable.from_iterable(range(10))
-xs = Observable.pipe(range(10))
+# xs = Observable.pipe(range(10))
 
 # subscribe to these temperature readings
-d = xs.subscribe(TemperatureObserver())
+# d = xs.subscribe(TemperatureObserver())
