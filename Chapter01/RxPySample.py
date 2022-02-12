@@ -1,9 +1,12 @@
-from rx import Observable, Observer
+from rx import Observable
 
 
 # Here we define our custom observer which
 # contains an on_next method, an on_error method
 # and an on_completed method
+from rx.core.typing import Observer
+
+
 class TemperatureObserver(Observer):
 
     # Every time we receive a temperature reading

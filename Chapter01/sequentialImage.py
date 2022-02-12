@@ -1,20 +1,23 @@
-import threading
-import urllib.request
 import time
+import urllib.request
+import urllib.request
 
-def downloadImage(imagePath, fileName):
-  print("Downloading Image from ", imagePath)
-  urllib.request.urlretrieve(imagePath, fileName)
+
+def download_image(image_path, file_name):
+    print("Downloading Image from ", image_path)
+    urllib.request.urlretrieve(image_path, file_name)
+
 
 def main():
-  t0 = time.time()
-  for i in range(10):
-    imageName = "temp/image-" + str(i) + ".jpg"
-    downloadImage("http://lorempixel.com/400/200/sports", imageName)
-  
-  t1 = time.time()
-  totalTime = t1 - t0
-  print("Total Execution Time {}".format(totalTime))
+    t0 = time.time()
+    for i in range(10):
+        image_name = "temp/image-" + str(i) + ".jpg"
+        download_image("http://lorempixel.com/400/200/sports", image_name)
+
+    t1 = time.time()
+    total_time = t1 - t0
+    print("Total Execution Time {}".format(total_time))
+
 
 if __name__ == '__main__':
-  main()
+    main()
