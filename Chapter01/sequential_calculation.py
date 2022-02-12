@@ -1,3 +1,5 @@
+""" Learning Concurrency in Python - Chapter 01 - sequential calculation """
+
 import time
 import random
 

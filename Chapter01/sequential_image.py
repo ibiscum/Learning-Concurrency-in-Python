@@ -1,5 +1,9 @@
+""" Learning Concurrency in Python - Chapter 01 - sequential image """
+
 import time
 import urllib.request
+
+
 import urllib.request
 
 

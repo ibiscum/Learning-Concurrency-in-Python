@@ -1,10 +1,12 @@
+""" Learning Concurrency in Python - Chapter 01 - concurrent calculation """
+
 import time
 import random
 from multiprocessing import Process
 
 
-# This does all of our prime factorization on a given number 'n'
 def calculate_prime_factors(n):
+    """ This does all of our prime factorization on a given number 'n' """
     prime_factors = []
     d = 2
     while d * d <= n:

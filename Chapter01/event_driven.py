@@ -1,3 +1,5 @@
+""" Learning Concurrency in Python - Chapter 01 - event driven """
+
 import turtle
 
 turtle.setup(500, 500)
