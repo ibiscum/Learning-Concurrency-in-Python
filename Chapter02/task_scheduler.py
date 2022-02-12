@@ -5,28 +5,28 @@ import random
 counter = 1
 
 
-def workerA():
+def worker_a():
     global counter
     while counter < 1000:
         counter += 1
         print("Worker A is incrementing counter to {}".format(counter))
-        sleepTime = random.randint(0, 1)
-        time.sleep(sleepTime)
+        sleep_time = random.randint(0, 1)
+        time.sleep(sleep_time)
 
 
-def workerB():
+def worker_b():
     global counter
     while counter > -1000:
         counter -= 1
         print("Worker B is decrementing counter to {}".format(counter))
-        sleepTime = random.randint(0, 1)
-        time.sleep(sleepTime)
+        sleep_time = random.randint(0, 1)
+        time.sleep(sleep_time)
 
 
 def main():
     t0 = time.time()
-    thread1 = threading.Thread(target=workerA)
-    thread2 = threading.Thread(target=workerB)
+    thread1 = threading.Thread(target=worker_a)
+    thread2 = threading.Thread(target=worker_b)
 
     thread1.start()
     thread2.start()
