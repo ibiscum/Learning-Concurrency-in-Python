@@ -49,7 +49,7 @@ def main():
     total_time = t_1 - t_0
 
     # we print out the total execution time for our 10 procs.
-    print("Execution Time: {}".format(total_time))
+    print(f"Execution Time: {total_time}")
 
 
 if __name__ == '__main__':

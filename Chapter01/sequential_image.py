@@ -19,7 +19,7 @@ def main():
 
     t_1 = time.time()
     total_time = t_1 - t_0
-    print("Total Execution Time {}".format(total_time))
+    print(f"Total Execution Time {total_time}")
 
 
 if __name__ == '__main__':
