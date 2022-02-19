@@ -5,7 +5,7 @@ from concurrent.futures import as_completed
 values = [2, 3, 4, 5, 6, 7, 8]
 
 
-def multiplyByTwo(n):
+def multiply_by_two(n):
     return 2 * n
 
 
@@ -15,7 +15,7 @@ def done():
 
 def main():
     with ThreadPoolExecutor(max_workers=3) as executor:
-        results = executor.map(multiplyByTwo, values)
+        results = executor.map(multiply_by_two, values)
 
         for result in results:
             print(result)

@@ -6,18 +6,21 @@ import time
 
 
 def download_image(image_path, file_name):
+    """ Download image. """
     print("Downloading Image from ", image_path)
     urllib.request.urlretrieve(image_path, file_name)
     print("Completed Download")
 
 
 def execute_thread(i):
+    """ Execute thread. """
     image_name = "temp/image-" + str(i) + ".jpg"
     download_image("http://lorempixel.com/400/200/sports", image_name)
 
 
 def main():
-    t0 = time.time()
+    """ Concurrent image download. """
+    t_0 = time.time()
     # create an array which will store a reference to
     # all of our threads
     threads = []
@@ -35,8 +38,8 @@ def main():
         i.join()
 
     # calculate the total execution time
-    t1 = time.time()
-    total_time = t1 - t0
+    t_1 = time.time()
+    total_time = t_1 - t_0
     print("Total Execution Time {}".format(total_time))
 
 

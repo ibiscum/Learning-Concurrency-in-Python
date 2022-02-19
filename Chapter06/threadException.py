@@ -4,13 +4,13 @@ import time
 import queue
 
 
-def myThread(queue):
+def myThread(queue_p):
     while True:
         try:
             time.sleep(2)
             raise Exception("Exception Thrown In Child Thread {}".format(threading.current_thread()))
         except:
-            queue.put(sys.exc_info())
+            queue_p.put(sys.exc_info())
 
 
 queue = queue.Queue()

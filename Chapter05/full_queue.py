@@ -3,10 +3,10 @@ import queue
 import time
 
 
-def my_publisher(pqueue):
-    while not pqueue.full():
-        pqueue.put(1)
-        print("{} Appended 1 to queue: {}".format(threading.current_thread(), pqueue.qsize()))
+def my_publisher(queue_p):
+    while not queue_p.full():
+        queue_p.put(1)
+        print("{} Appended 1 to queue: {}".format(threading.current_thread(), queue_p.qsize()))
         time.sleep(1)
 
 

@@ -11,20 +11,22 @@ def my_subscriber(queue_p):
             break
         print("{} removed {} from the queue".format(threading.current_thread(), item))
         queue_p.task_done()
-        time.sleep(1)
 
 
-myQueue = queue.Queue()
+myQueue = queue.LifoQueue()
+
 for i in range(10):
     myQueue.put(i)
 
 print("Queue Populated")
 
 threads = []
-for i in range(4):
+for i in range(2):
     thread = threading.Thread(target=my_subscriber, args=(myQueue,))
     thread.start()
     threads.append(thread)
 
 for thread in threads:
     thread.join()
+
+print("Queue is empty")

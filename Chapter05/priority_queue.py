@@ -14,17 +14,23 @@ def my_subscriber(queue_p):
         time.sleep(1)
 
 
-myQueue = queue.Queue()
-for i in range(10):
-    myQueue.put(i)
+myQueue = queue.PriorityQueue()
+
+for i in range(5):
+    myQueue.put(i, i)
+
+for i in range(5):
+    myQueue.put(i, i)
 
 print("Queue Populated")
 
 threads = []
-for i in range(4):
+for i in range(2):
     thread = threading.Thread(target=my_subscriber, args=(myQueue,))
     thread.start()
     threads.append(thread)
 
 for thread in threads:
     thread.join()
+
+print("Queue is empty")

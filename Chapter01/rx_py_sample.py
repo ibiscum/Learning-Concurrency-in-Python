@@ -1,32 +1,35 @@
 """ Learning Concurrency in Python - Chapter 01 - rx Python sample """
-
 # from rx import Observable
 
 
 # Here we define our custom observer which
 # contains an on_next method, an on_error method
 # and an on_completed method
-from rx.core.typing import Observer
+from rx import Observable
 
 
-class TemperatureObserver(Observer):
+class TemperatureObserver(Observable):
+    """ Observing temperature. """
 
     # Every time we receive a temperature reading
     # this method is called
-    def on_next(self, x):
-        print("Temperature is: %s degrees centigrade" % x)
-        if x > 6:
+    @classmethod
+    def on_next(cls, x_v):
+        """ Next temperature. """
+        print("Temperature is: %s degrees centigrade" % x_v)
+        if x_v > 6:
             print("Warning: Temperate Is Exceeding Recommended Limit")
-        if x == 9:
+        if x_v == 9:
             print("DataCenter is shutting down. Temperature is too high")
 
-    # if we were to receive an error message
-    # we would handle it here
-    def on_error(self, e):
-        print("Error: %s" % e)
+    @classmethod
+    def on_error(cls, e_v):
+        """ If we were to receive an error message, we would handle it here """
+        print("Error: %s" % e_v)
 
-    # This is called when the stream is finished
-    def on_completed(self):
+    @classmethod
+    def on_completed(cls):
+        """ This is called when the stream is finished """
         print("All Temps Read")
 
 

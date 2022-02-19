@@ -1,17 +1,15 @@
-import threading
 import queue
-import random
-import time
+import threading
 
 
 def my_subscriber(queue_p):
-    while not queue_p.empty():
+    while True:
         item = queue_p.get()
         if item is None:
             break
         print("{} removed {} from the queue".format(threading.current_thread(), item))
+        print("Queue Size is now: {}".format(queue_p.qsize()))
         queue_p.task_done()
-        time.sleep(1)
 
 
 myQueue = queue.Queue()
@@ -26,5 +24,4 @@ for i in range(4):
     thread.start()
     threads.append(thread)
 
-for thread in threads:
-    thread.join()
+myQueue.join()

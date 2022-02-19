@@ -5,36 +5,37 @@ import random
 from multiprocessing import Process
 
 
-def calculate_prime_factors(n):
+def calculate_prime_factors(n_p):
     """ This does all of our prime factorization on a given number 'n' """
     prime_factors = []
-    d = 2
-    while d * d <= n:
-        while (n % d) == 0:
-            prime_factors.append(d)  # supposing you want multiple factors repeated
-            n //= d
-        d += 1
-    if n > 1:
-        prime_factors.append(n)
+    d_v = 2
+    while d_v * d_v <= n_p:
+        while (n_p % d_v) == 0:
+            prime_factors.append(d_v)  # supposing you want multiple factors repeated
+            n_p //= d_v
+        d_v += 1
+    if n_p > 1:
+        prime_factors.append(n_p)
     return prime_factors
 
 
-# We split our workload from one batch of 10,000 calculations
-# into 10 batches of 1,000 calculations
 def execute_proc():
-    for i in range(1000):
+    """ We split our workload from one batch of 10,000 calculations into 10 batches of 1,000
+    calculations """
+    for _ in range(1000):
         rand = random.randint(20000, 100000000)
         print(calculate_prime_factors(rand))
 
 
 def main():
+    """ Concurrent calculation """
     print("Starting number crunching")
-    t0 = time.time()
+    t_0 = time.time()
 
     procs = []
 
     # Here we create our processes and kick them off
-    for i in range(10):
+    for _ in range(10):
         proc = Process(target=execute_proc, args=())
         procs.append(proc)
         proc.start()
@@ -44,10 +45,10 @@ def main():
     for proc in procs:
         proc.join()
 
-    t1 = time.time()
-    total_time = t1 - t0
-    # we print out the total execution time for our 10
-    # procs.
+    t_1 = time.time()
+    total_time = t_1 - t_0
+
+    # we print out the total execution time for our 10 procs.
     print("Execution Time: {}".format(total_time))
 
 
