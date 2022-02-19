@@ -16,7 +16,7 @@ class TemperatureObserver(Observable):
     @classmethod
     def on_next(cls, x_v):
         """ Next temperature. """
-        print("Temperature is: %s degrees centigrade" % x_v)
+        print(f"Temperature is: {x_v} degrees centigrade")
         if x_v > 6:
             print("Warning: Temperate Is Exceeding Recommended Limit")
         if x_v == 9:
@@ -25,7 +25,7 @@ class TemperatureObserver(Observable):
     @classmethod
     def on_error(cls, e_v):
         """ If we were to receive an error message, we would handle it here """
-        print("Error: %s" % e_v)
+        print(f"Error: {e_v}")
 
     @classmethod
     def on_completed(cls):
